@@ -51,10 +51,7 @@ def build_workbook(year, template):
         sheet.range('F6').value = "'%s - %s" % (periods[3][0], periods[3][1])
         sheet.range('G6').value = "'%s - %s" % (periods[4][0], periods[4][1])
 
-        if i == 0:
-            # Remove useless cells on first sheet
-            sheet.range('E2:F3').clear()
-        else:
+        if i > 0:
             # Link to previous month balance
             previous_sheet = calendar.month_name[num - 1].title()
             sheet.range('E3').value = "='%s'!$O$3" % (previous_sheet)
